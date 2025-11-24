@@ -1,0 +1,10 @@
+pipeline {
+    agent any
+    stages {
+        stage('Run Automation') {
+            steps {
+                sh 'bash run.sh'
+            }
+        }
+    }
+}
