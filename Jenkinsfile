@@ -11,7 +11,11 @@ pipeline {
 
         stage('Install Python Dependencies') {
             steps {
-                bat '"C:\\Users\\Ujjwal Sharma\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m pip install -r requirements.txt'
+                echo "Installing Python dependencies..."
+                sh '''
+                python3 --version
+                pip3 install -r requirements.txt || pip install -r requirements.txt
+                '''
             }
         }
 
