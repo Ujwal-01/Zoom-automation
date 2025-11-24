@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('Clone Repo') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Ujwal-01/Zoom-automation.git'
+            }
+        }
+
+        stage('Install Python Dependencies') {
+            steps {
+                bat '"C:\\Users\\Ujjwal Sharma\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run Zoom Automation') {
+            steps {
+                sh 'chmod +x run.sh'
+                sh './run.sh'
+            }
+        }
+    }
+}
